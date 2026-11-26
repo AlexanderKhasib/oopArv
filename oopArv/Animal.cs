@@ -3,7 +3,7 @@ namespace oopArv
 {
     public class Animal
     {
-        // My properties for Animal class, with a default value shared for all animals
+        // My properties for the Animal class, with a default value shared for all the animals
         public string Name { get; set; } = "";
         public int Age { get; set; } = 0;
         public int Weight { get; set; } = 0;
@@ -36,8 +36,8 @@ namespace oopArv
             }
         }
 
-        // My base method to print the animal's name, and the sound they make.
-        // Then overriding it to be able to add add the specific sound the animal makes
+        // Base method to print out the animal name and sound.
+        // It is overridden and replaced later in the subclasses to print each animal's name and unique sound
         public virtual void MakeSound()
         {
             Console.WriteLine($"{Name}");
