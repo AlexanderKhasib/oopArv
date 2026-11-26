@@ -4,101 +4,37 @@ namespace oopArv
     public class Animal
     {
         // Properties with default shared values for all animals
-        public string Name { get; set; }
-        public int Age { get; set; }
-        public string Color { get; set; }
-        public int HowLongAtZoo { get; set; }
-        public string FavoriteFood { get; set; }
-        public string AnimalSound { get; set; }
-        public bool CheckEnd { get; set; } = true;
-        public ConsoleColor ConsoleNewColor { get; set; }
-        public Animal(string name, int age, string color, int howLongAtZoo, bool checkEnd, string favoriteFood, ConsoleColor consoleNewColor, string animalSound)
+        public string Name { get; set; } = "";
+        public int Age { get; set; } = 0;
+        public int Weight { get; set; } = 0;
+        public int HowLongAtZoo { get; set; } = 0;
+        public bool IsCarnivore { get; set; } = false;
+        public Animal(string name, int age, int weight, int howLongAtZoo, bool isCarnivore)
         {
             Name = name;
             Age = age;
-            Color = color;
+            Weight = weight;
             HowLongAtZoo = howLongAtZoo;
-            FavoriteFood = favoriteFood;
-            ConsoleNewColor = consoleNewColor;
-            AnimalSound = animalSound;
-            CheckEnd = checkEnd;
+            IsCarnivore = isCarnivore;
         }
-        public void Wait()
+        public void Eat()
         {
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine();
-            Console.WriteLine("\nTryck valfri knapp för att gå vidare...  ");
-            Console.ReadKey(true);
-            Console.Clear();
-            Console.ResetColor();
-        }
-        public virtual void AddAllAnimals()
-        {
-            Animal[] zoo = { new Lion("", 0, 0), new Bear(), new Sheep() };
-            foreach (Animal animal in zoo)
+            if (IsCarnivore)
             {
-                animal.GetAnimalInfo("", 0, 0);
-                animal.AnimalColor("");
-                animal.FavoriteFoods("");
-                animal.AnimalSounds("");
-                CheckEndOfAnimal(true);
+                Console.WriteLine($"{Name} äter kött!");
+            }
+            else
+            {
+                Console.WriteLine($"{Name} äter växter!");
             }
         }
-        public virtual void ChangeFontColor()
+        public virtual void MakeSound()
         {
-            Console.ForegroundColor = ConsoleNewColor;
-            Console.Write(Color);
-            Console.ResetColor();
+            Console.WriteLine($"{Name}");
         }
-        public virtual void GetAnimalInfo(string name, int age, int howLongAtZoo)
+        public void TimeAtZoo()
         {
-            Console.WriteLine($"Det är en {Name} som är {Age} år. Den har {HowLongAtZoo} år.");
-        }
-        public virtual void AnimalColor(string color)
-        {
-            Console.WriteLine($"{Name} har vart här i {HowLongAtZoo} år");
-        }
-        public virtual void FavoriteFoods(string favoriteFood)
-        {
-            Console.WriteLine($"{Name} favorit mat är {FavoriteFood}");
-        }
-        public virtual void AnimalSounds(string animalSounds)
-        {
-            Console.WriteLine($"{Name} låter {AnimalSound}");
-        }
-        public virtual void CheckEndOfAnimal(bool checkEnd)
-        {
-            Console.WriteLine($"1. För att läsa om!\n");
-            Console.WriteLine($"2. För att fortsätta till nästa djur!");
-            while (CheckEnd)
-            {
-                string userInput = Console.ReadLine();
-                Animal[] zoo = { new Lion("", 0, 0), new Bear(), new Sheep() };
-                foreach (Animal animal in zoo)
-                {
-                    if (!int.TryParse(userInput, out int number))
-                    {
-                        Console.WriteLine("Använd gilligt tecken");
-                        continue;
-                    }else if(userInput == "1")
-                    {
-                        animal.GetAnimalInfo("", 0, 0);
-                        animal.AnimalColor("");
-                        animal.FavoriteFoods("");
-                        animal.AnimalSounds("");
-                        break;
-                    }
-                    else if (userInput == "2")
-                    {
-                        Console.WriteLine("Fortsätter!..");
-                        break;
-                    }
-
-                }
-
-                break;
-                
-            }
+            Console.WriteLine($"{Name} har bott här i {HowLongAtZoo} år!");
         }
     }
 }
