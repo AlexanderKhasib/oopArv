@@ -3,7 +3,7 @@ namespace oopArv
 {
     public class Animal
     {
-        // My properties for the Animal class, with a default value shared for all the animals
+        // My properties for the Animal class, with the default value shared for all animals made
         public string Name { get; set; } = "";
         public int Age { get; set; } = 0;
         public int Weight { get; set; } = 0;
